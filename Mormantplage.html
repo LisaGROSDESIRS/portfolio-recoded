@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Mormant plage</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <!-- Added GSAP and ScrollSmoother CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<!-- ScrollSmoother requires ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+  </head>
+  <body>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <!-- BANDEAUX -->
+
+        <div class="bandeaux-container">
+          <img
+            class="bandeaux"
+            src="mo/ban.jpg"
+            alt="Bannière du projet"
+          />
+          <a href="projet.html" class="btn-retour">Retour</a>
+        </div>
+
+        <!-- SECTION 1 -->
+        <div class="section" data-speed="1">
+          <h2>info projet</h2>
+          <div class="info-container">
+            <div class="info-text">
+              <strong>Client :</strong> Mormant plage<br />
+              <strong>Rôles :</strong> Directrice Artistique<br />Graphiste<br />Photographe
+              <strong>Description :</strong>
+              Concevoir une direction artistique cohérente qui fusionne pour donner une notion de vacance et d'amusement pour informer les habitants des programmes et des activités à venir pendant les vacances d'été à Mormant<br />
+              <strong>Logiciels utilisés :</strong> Photoshop<br />
+              Illustrator <br />
+              Indesign
+            </div>
+            
+            <video class="info-image"  autoplay loop width="250">
+  <source src="mo/logo.mp4" type="video/mp4"  />
+          </div>
+        </div>
+
+          <div class="GGDL-gallery">
+            <img class="gallerie" src="mo/flyers.jpg" alt="">
+            <img class="gallerie" src="mo/stroyboard.jpg" alt="">
+          </div>
+
+         <img class="bande" src="mo/da.jpg" alt="">
+
+        <div class="repeated-text" data-speed="1">
+          <div class="scroll">
+            <div class="droite">
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+            </div>
+            <div class="gauche">
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+            </div>
+            <div class="droite">
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="section2mo" data-speed="1">
+          <h2>CONCEPTION</h2>
+          <p>
+              Le concept graphique visait à évoquer l'été, les vacances et l'amusement. Pour traduire cette ambiance, 
+              j'ai développé des stories dynamiques et une palette de couleurs chaudes 
+              qui capturent l'esprit de la saison, indépendamment des conditions météorologiques réelles.
+          </p>
+
+          <div class="GGDL-gallery">
+            
+            <video class="trio"  autoplay loop muted >
+  <source src="mo/videotease.mp4" type="video/mp4"/> </video>
+
+  <video class="trio"  autoplay loop muted >
+  <source src="mo/videosolo.mp4" type="video/mp4"/> </video>
+
+  <video class="trio" autoplay loop muted >
+  <source src="mo/videomulti.mp4" type="video/mp4"/> </video>
+            
+          </div>
+        </div>
+
+        <img class="bande" src="mo/calicot.jpg" alt="">
+
+        <script src="scroll.js"></script>
+        <script src="gsap.min.js"></script>
+      </div>
+    </div>
+  </body>
+</html>

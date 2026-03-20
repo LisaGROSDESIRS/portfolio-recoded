@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Lisa Gros-Desirs, web designer et graphiste. Découvrez mes projets créatifs et contactez-moi." />
+  <title>Lisa Gros-Desirs | Web Designer & Graphiste</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="horizontal.css" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+</head>
+
+  <body>
+    <div class="transition active"></div>
+
+    <!-- DOTS -->
+    <div class="dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+
+    <!-- SCROLL HINT -->
+    <div class="scroll-hint">
+      <span>Défiler</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <!-- COMPTEUR -->
+    <div class="slide-counter">
+      <span class="current-slide">01</span>
+      <span class="separator"> / </span>
+      <span class="total-slides">03</span>
+    </div>
+
+    <div class="top-bar">
+      <div class="top-left">
+         <h1 class="title"><a href="index.html" class="transition-link">LISA</a></h1>
+      <p class="subtitles" aria-hidden="true"></p>
+      </div>
+
+      <nav class="menu-desktop" aria-label="Menu principal">
+        <a class="transition-link" href="index.html">Accueil</a>
+        <a class="transition-link" href="projet.html">Projets</a>
+        <a href="à propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div
+        class="burger"
+        id="burger"
+        aria-label="Menu"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+        aria-controls="menu-mobile"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile">
+        <a class="transition-link" href="index.html">Accueil</a>
+        <a class="transition-link" href="projet.html">Projets</a>
+        <a href="à propos.html">À propos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <section id="horizontal-scroll">
+
+      <!-- SLIDE 1 — Qui suis-je -->
+      <div class="content">
+        <section class="pres">
+          <h1>QUI SUIS-JE ?</h1>
+          <p class="presentation chars">
+            Je m'appelle Lisa GROS-DESIRS,<br />
+            Je suis diplômée d'un Bachelor en web design<br />et communication digitale.
+          </p>
+        </section>
+
+        <div class="box box-1"><img src="me/photo.jpg" alt="photo" /></div>
+        <div class="box box-2"><img src="me/escalade.jpg" alt="escalade" /></div>
+        <div class="box box-3"><img src="me/serpent.jpg" alt="serpent" /></div>
+        <div class="box box-4"><img src="me/ski.jpg" alt="ski" /></div>
+        <div class="box box-5"><img src="me/vicomte.jpg" alt="vicomte" /></div>
+        <div class="box box-6"><img src="me/minorque.jpg" alt="minorque" /></div>
+      </div>
+
+      <!-- SLIDE 2 — Services & Compétences -->
+      <div class="content service-first">
+        <section class="service">
+          <div class="bloc">
+            <p class="chars">
+              <strong>SERVICES</strong><br /><br />
+              Direction artistique,<br />
+              Branding,<br />
+              UX/UI design,<br />
+              Product design
+            </p>
+          </div>
+
+          <span class="vertical-line"></span>
+
+          <div class="bloc">
+            <p class="chars">
+              <strong>DESIGN</strong><br /><br />
+              Illustrator,<br />
+              Photoshop,<br />
+              Lightroom,<br />
+              Indesign,<br />
+              Figma,<br />
+              Fresco
+            </p>
+          </div>
+
+          <span class="vertical-line"></span>
+
+          <div class="bloc">
+            <p class="chars">
+              <strong>DÉVELOPPEMENT</strong><br /><br />
+              HTML/CSS/JS,<br />
+              GSAP,<br />
+              Github
+            </p>
+          </div>
+
+          <span class="vertical-line"></span>
+
+          <div class="bloc">
+            <p class="chars">
+              <strong>AUTRES</strong><br /><br />
+              SEO,<br />
+              Gestion réseaux sociaux,<br />
+              Notion
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- SLIDE 3 — Pourquoi le graphisme -->
+      <div class="content service-second">
+        <section class="service-why">
+          <h1 class="chars">POURQUOI J'AI CHOISI LE GRAPHISME ?</h1>
+          <p class="chars">
+            J'ai toujours ressenti le besoin de créer des univers visuels et
+            de trouver du sens dans ce que j'observe. Les couleurs, les
+            formes, les affiches, les logos ou les couvertures de livres
+            m'inspiraient des histoires cachées, comme si chaque image avait
+            quelque chose à raconter.
+          </p>
+          <p class="chars">
+            Un jour, une publicité m'a particulièrement marquée : celle d'un
+            ours devenu producteur et réalisateur par passion. Une phrase ne
+            m'a jamais quittée :
+          </p>
+          <p class="citation chars">
+            <i>« Vous savez, j'ai vu tellement de grands films qu'un jour je
+            me suis dit… pourquoi pas <strong>MOI</strong> ? »</i>
+          </p>
+          <p class="chars">
+            <strong>ALORS</strong>, aujourd'hui, la direction artistique et le
+            graphisme me permettent d'unir cette sensibilité et cette curiosité
+            pour créer des expériences visuelles cohérentes et porteuses
+            d'émotion.
+          </p>
+        </section>
+      </div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="observer.js"></script>
+  </body>
+</html>

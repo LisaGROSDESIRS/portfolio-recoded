@@ -1,0 +1,486 @@
+/* ========================================
+   VARIABLES & RESET
+======================================== */
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #000000;
+  --topbar-height: 70px;
+  --green: #87ab5c;
+  --green-shadow: rgb(80, 106, 81);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* ========================================
+   TOP BAR
+======================================== */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--topbar-height);
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.073);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.top-left {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.title a {
+  color: var(--primary-color);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.title a:hover {
+  opacity: 0.7;
+}
+
+.subtitles {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+/* ========================================
+   MENU DESKTOP
+======================================== */
+.menu-desktop {
+  display: flex;
+  gap: 12px;
+}
+
+.menu-desktop a {
+  padding: 6px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.menu-desktop a:hover,
+.menu-desktop a:focus,
+.menu-desktop a[aria-current="page"] {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* ========================================
+   BURGER
+======================================== */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1100;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--primary-color);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.burger.active span:nth-child(1) {
+  transform: translateY(9.5px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
+}
+
+/* ========================================
+   MENU MOBILE
+======================================== */
+.menu-mobile {
+  display: none;
+  position: fixed;
+  top: calc(var(--topbar-height) + 8px);
+  right: 20px;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 20px 28px;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1050;
+  min-width: 160px;
+}
+
+.menu-mobile a {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  padding: 4px 0;
+}
+
+.menu-mobile a:hover {
+  opacity: 0.6;
+}
+
+/* ========================================
+   TRANSITION PAGE
+======================================== */
+.transition {
+  position: fixed;
+  inset: 0;
+  background: var(--green);
+  z-index: 9999;
+  transform: translateY(0);
+  pointer-events: none;
+}
+
+.transition.active {
+  animation: transitionOut 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes transitionOut {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+/* ========================================
+   HORIZONTAL SCROLL
+======================================== */
+#horizontal-scroll {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#horizontal-scroll .content {
+  height: 100vh;
+  width: 100vw;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: white;
+  background-color: var(--green);
+  text-shadow: var(--green-shadow) 1px 0 10px;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 60px 40px;
+}
+
+/* ========================================
+   SLIDE 1 — PRÉSENTATION
+======================================== */
+ .pres {
+  position: relative;
+  z-index: 10;
+  width: 1460px;
+  max-width: 1460px;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   IMAGES / BOXES
+======================================== */
+.box {
+  position: absolute;
+  width: 11vw;
+  height: 16vw;
+  pointer-events: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  will-change: transform;
+}
+
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.9;
+}
+
+/* Positions de base */
+.box-1 { top: 18%; left: 52%; }
+.box-2 { top: 55%; left: 60%; }
+.box-3 { top: 10%; left: 72%; }
+.box-4 { top: 58%; left: 76%; }
+.box-5 { top: 18%; left: 86%; }
+.box-6 { top: 55%; left: 44%; }
+
+/* ========================================
+   SLIDE 2 — SERVICES
+======================================== */
+.service {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 100%;
+}
+
+.service .bloc {
+  padding: 10px;
+}
+
+.vertical-line {
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  height: 320px;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   SLIDE 3 — POURQUOI
+======================================== */
+.service-why {
+  max-width: 1560px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+  padding-right: 10px;
+  scrollbar-width: none;
+}
+
+.service-why::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========================================
+   TYPOGRAPHIE
+======================================== */
+h1 {
+  font-size: clamp(24px, 3.5vw, 48px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+p {
+  font-size: clamp(14px, 1.3vw, 19px);
+  line-height: 1.75;
+}
+
+.citation {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(15px, 1.5vw, 21px);
+  border-left: 3px solid rgba(255, 255, 255, 0.6);
+  padding-left: 20px;
+  opacity: 0.9;
+}
+
+/* ========================================
+   DOTS
+======================================== */
+.dots {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 500;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.4);
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* ========================================
+   SCROLL HINT
+======================================== */
+.scroll-hint {
+  position: fixed;
+  bottom: 32px;
+  right: 48px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 500;
+  color: white;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.55;
+  transition: opacity 0.6s ease;
+}
+
+.scroll-hint.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-line {
+  width: 55px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  animation: scrollLineAnim 2s ease-in-out infinite;
+}
+
+@keyframes scrollLineAnim {
+  to {
+    left: 100%;
+  }
+}
+
+/* ========================================
+   COMPTEUR SLIDE
+======================================== */
+.slide-counter {
+  position: fixed;
+  bottom: 32px;
+  left: 48px;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 3px;
+  opacity: 0.5;
+  z-index: 500;
+  font-weight: 600;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 1024px) {
+  .vertical-line {
+    display: none;
+  }
+  .service {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .menu-desktop {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .top-bar {
+    padding: 12px 20px;
+  }
+
+  #horizontal-scroll {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  #horizontal-scroll .content {
+    width: 100vw;
+    min-width: unset;
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 24px 60px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .box {
+    display: none;
+  }
+
+  .vertical-line {
+    display: none;
+  }
+
+  .service {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .service-why {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .dots,
+  .scroll-hint,
+  .slide-counter {
+    display: none;
+  }
+}

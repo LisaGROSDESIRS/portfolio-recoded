@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | O'clock</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <!-- Added GSAP and ScrollSmoother CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<!-- ScrollSmoother requires ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+  </head>
+  <body>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <!-- BANDEAUX -->
+
+        <div class="bandeaux-container">
+          <img
+            class="bandeaux"
+            src="OC/bannièrre.jpg"
+            alt="Bannière du projet"
+          />
+          <a href="projet.html" class="btn-retour">Retour</a>
+        </div>
+
+        <!-- SECTION 1 -->
+        <div class="section" data-speed="1">
+          <h2>info projet</h2>
+          <div class="info-container">
+            <div class="info-text">
+              <strong>Client :</strong> O'clock <br />
+              <strong>Rôles :</strong> Directrice Artistique<br />Graphiste<br />
+              <strong>Description :</strong>
+              Concevoir une affiche qui fusionne l’univers de la danse classique et
+              la notion du temps. Pour représenter chaque danseur
+              comme une heure, illustrant le temps qui passe. Ce visuel joue sur
+              l’harmonie entre discipline artistique et le temps, offrant une
+              interprétation graphique où chaque posture incarne un instant
+              unique. <br />
+              <strong>Logiciels utilisés :</strong> Photoshop<br />
+              Illustrator <br />
+              Indesign
+            </div>
+            <img class="info-image" src="OC/header.jpg" alt="Logo du projet" />
+          </div>
+        </div>
+
+        <video autoplay loop class="bandes" src="OC/vidéo.mp4"></video>
+
+        <div class="repeated-text" data-speed="1">
+          <div class="scroll">
+            <div class="droite">
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+            </div>
+            <div class="gauche">
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+            </div>
+            <div class="droite">
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+              <p>
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+                VISUALISATION VISUALISATION VISUALISATION VISUALISATION
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <img class="bandes" src="OC/typo.jpg" alt="">
+
+        <!-- SECTION 2 -->
+        <div class="section2OC" data-speed="1">
+          <h2>CONCEPTION</h2>
+          <p>
+          J'ai supprimé la distraction de la couleur, 
+            pour laisser les spectateurs se concentrer sur les contrastes, 
+            les textures, et la composition de l'image, 
+            renforçant ainsi l'impact émotionnel et narratif de l'œuvre.
+          </p>
+
+          <div class="GGDL-gallery">
+           <img class="gallerie" src="OC/Flag_Mockup_.png" alt="">
+            <img class="gallerie" src="OC/flyers.png" alt="">
+            <img class="gallerie" src="OC/ticket.jpg" alt="">
+            <img class="gallerie" src="OC/métro.jpg" alt="">
+          </div>
+        </div>
+
+        <script src="scroll.js"></script>
+        <script src="gsap.min.js"></script>
+      </div>
+    </div>
+  </body>
+</html>

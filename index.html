@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Lisa Gros-Desirs, web designer et graphiste. Découvrez mes projets créatifs et contactez-moi." />
+  <title>Lisa Gros-Desirs | Web Designer & Graphiste</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+</head>
+<body>
+  <div class="transition active" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="pages" id="pages">
+      <!-- Page 1 : Accueil -->
+      <section class="page pagehome" id="animation" data-index="0" aria-label="Page d'accueil">
+        <header class="top-bar">
+          <div class="top-left">
+            <h1 class="title"><a href="index.html" class="transition-link">PORTFOLIO</a></h1>
+            <p class="subtitles" aria-hidden="true"></p>
+          </div>
+
+          <nav class="menu-desktop" aria-label="Menu principal">
+            <a href="index.html" class="transition-link">Accueil</a>
+            <a href="projet.html" class="transition-link">Projets</a>
+            <a href="à propos.html" class="transition-link">À propos</a>
+            <a href="contact.html" class="transition-link">Contact</a>
+          </nav>
+
+          <button class="burger" id="burger" aria-label="Menu mobile" aria-expanded="false" aria-controls="menu-mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile">
+            <a href="index.html" class="transition-link">Accueil</a>
+            <a href="projet.html" class="transition-link">Projets</a>
+            <a href="à propos.html" class="transition-link">À propos</a>
+            <a href="contact.html" class="transition-link">Contact</a>
+          </nav>
+        </header>
+
+        <main class="center-primary">
+          <h2 class="main-primary">LISA GROS-DESIRS</h2>
+          <p class="subtitle-primary">WEB DESIGNER ET GRAPHISTE</p>
+        </main>
+
+        <div id="video-fond">
+          <video src="fond/video2.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+        </div>
+
+        <footer class="bottom-right">
+          <div class="roles">
+            <h3 class="roles-title">CONTACT</h3>
+            <div class="roles-list">
+              <a href="mailto:lisa.gros-desirs@outlook.fr">lisa.gros-desirs@outlook.fr</a><br />
+              <a href="https://www.linkedin.com/in/lisa-gros-desirs/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+          
+        </footer>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script src="texte.js" defer></script>
+</body>
+</html>

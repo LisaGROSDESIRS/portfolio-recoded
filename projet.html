@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Lisa Gros-Desirs, web designer et graphiste." />
+  <title>Lisa Gros-Desirs | Web Designer & Graphiste</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+</head>
+<body>
+
+  <div class="transition active" aria-hidden="true"></div>
+
+  <!-- TOP BAR EN DEHORS DU CONTAINER -->
+  <header class="top-bar">
+    <div class="top-left">
+      <h1 class="title"><a href="index.html" class="transition-link">LISA</a></h1>
+      <p class="subtitles" aria-hidden="true">Gros-Desirs</p>
+    </div>
+
+    <nav class="menu-desktop" aria-label="Menu principal">
+      <a href="index.html" class="transition-link">Accueil</a>
+      <a href="projet.html" class="transition-link">Projets</a>
+      <a href="à propos.html" class="transition-link">À propos</a>
+      <a href="contact.html" class="transition-link">Contact</a>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Menu mobile" aria-expanded="false" aria-controls="menu-mobile">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile">
+      <a href="index.html" class="transition-link">Accueil</a>
+      <a href="projet.html" class="transition-link">Projets</a>
+      <a href="à propos.html" class="transition-link">À propos</a>
+      <a href="contact.html" class="transition-link">Contact</a>
+    </nav>
+  </header>
+
+  <!-- CONTAINER UNIQUE -->
+  <div class="container">
+    <div class="pages" id="pages">
+
+      <!-- Projet 01 -->
+      <section class="page page1" data-index="0" aria-label="Projet 1 : La Grande Galerie de l'Évolution">
+        <div class="page-bg" style="background-image: url('baleine.jpg');"></div>
+        <div class="page-overlay"></div>
+        <div class="center-left">
+          <h2 class="main-title">LA GRANDE GALERIE<br />DE L'ÉVOLUTION</h2>
+          <div class="subtitle">
+            <a href="LaGrandeGalerieDeLevolution.html" class="transition-link">EN SAVOIR PLUS</a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <div class="roles">
+            <p class="roles-title">RÔLES</p>
+            <div class="roles-list">
+              Direction artistique<br />
+              Graphisme<br />
+              Illustration
+            </div>
+          </div>
+          <div class="number" aria-hidden="true">01</div>
+        </div>
+      </section>
+
+      <!-- Projet 02 — remplace par ton vrai contenu -->
+      <section class="page page2" data-index="1" aria-label="Projet 2">
+        <div class="page-bg" style="background-image: url('clock.jpg');"></div>
+        <div class="page-overlay"></div>
+        <div class="center-left">
+          <h2 class="main-title">O CLOCK</h2>
+          <div class="subtitle">
+            <a href="Oclock.html" class="transition-link">EN SAVOIR PLUS</a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <div class="roles">
+            <p class="roles-title">RÔLES</p>
+            <div class="roles-list">Graphisme<br />Direction artistique<br />Mockup</div>
+          </div>
+          <div class="number" aria-hidden="true">02</div>
+        </div>
+      </section>
+
+      <!-- Projet 03 -->
+      <section class="page page3" data-index="2" aria-label="Projet 3 : Droits des Femmes">
+        <div class="page-bg" style="background-image: url('femmes.jpg');"></div>
+        <div class="page-overlay"></div>
+        <div class="center-left">
+          <h2 class="main-title">JOURNÉE INTERNATIONALE<br />DES DROITS DES FEMMES</h2>
+          <div class="subtitle">
+            <a href="DroitDesFemmes.html" class="transition-link">EN SAVOIR PLUS</a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <div class="roles">
+            <p class="roles-title">RÔLES</p>
+            <div class="roles-list">
+              Direction artistique<br />
+              Graphisme<br />
+              Intelligence artificielle
+            </div>
+          </div>
+          <div class="number" aria-hidden="true">03</div>
+        </div>
+      </section>
+
+      <!-- Projet 04 -->
+      <section class="page page4" data-index="3" aria-label="Projet 4 : EU AI Act">
+        <div class="page-bg" style="background-image: url('pc.jpg');"></div>
+        <div class="page-overlay"></div>
+        <div class="center-left">
+          <h2 class="main-title">EU AI ACT</h2>
+          <div class="subtitle">
+            <a href="IntelligenceArtifficialAct.html" class="transition-link">EN SAVOIR PLUS</a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <div class="roles">
+            <p class="roles-title">RÔLES</p>
+            <div class="roles-list">UX/UI Design<br />Graphisme<br />Prototypage</div>
+          </div>
+          <div class="number" aria-hidden="true">04</div>
+        </div>
+      </section>
+
+      <!-- Projet 05 -->
+      <section class="page page5" data-index="4" aria-label="Projet 5 : Mormant Plage">
+        <div class="page-bg" style="background-image: url('mormant.jpg');"></div>
+        <div class="page-overlay"></div>
+        <div class="center-left">
+          <h2 class="main-title">MORMANT PLAGE</h2>
+          <div class="subtitle">
+            <a href="Mormantplage.html" class="transition-link">EN SAVOIR PLUS</a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <div class="roles">
+            <p class="roles-title">RÔLES</p>
+            <div class="roles-list">
+              Direction Artistique<br />
+              Graphisme<br />
+              Branding
+            </div>
+          </div>
+          <div class="number" aria-hidden="true">05</div>
+        </div>
+      </section>
+
+      <!-- Projet 06 -->
+      <section class="page page6" data-index="5" aria-label="Projet 6 : Domaine de Luce">
+        <div class="page-bg" style="background-image: url('domaine/img3.jpg');"></div>
+        <div class="page-overlay"></div>
+        <div class="center-left">
+          <h2 class="main-title">DOMAINE DE LUCE</h2>
+          <div class="subtitle">
+            <a href="Domainedeluce.html" class="transition-link">EN SAVOIR PLUS</a>
+          </div>
+        </div>
+        <div class="bottom-right">
+          <div class="roles">
+            <p class="roles-title">RÔLES</p>
+            <div class="roles-list">
+              Direction Artistique<br />
+              Graphisme<br />
+              Communication<br />
+              Branding
+            </div>
+          </div>
+          <div class="number" aria-hidden="true">06</div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
