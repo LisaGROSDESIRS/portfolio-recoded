@@ -1,10 +1,26 @@
-/* General Styles */
+/* ─── VARIABLES ─────────────────────────────────────────────────────────── */
+:root {
+  --font-body: "Montserrat", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --color-bg: #fff;
+  --color-text: #000;
+  --radius: 10px;
+  --transition: 0.25s ease;
+}
+
+/* ─── RESET & BASE ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-body);
   margin: 0;
-  padding: 0 20px; /* Base padding for desktop */
-  background-color: #fff;
-  color: #000;
+  padding: 0 20px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden;
 }
 
@@ -16,7 +32,22 @@ h2 {
   padding: 10px 20px;
 }
 
-/* Layout Components */
+/* ─── SMOOTH SCROLL WRAPPER ──────────────────────────────────────────────── */
+#smooth-wrapper {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+}
+
+/* ─── SECTION 1 ──────────────────────────────────────────────────────────── */
 .section {
   margin-top: 40px;
   padding: 0 40px;
@@ -47,15 +78,17 @@ h2 {
   min-width: 250px;
   height: auto;
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: var(--radius);
+  object-fit: cover;
 }
 
-/* Bannière and Button */
+/* ─── BANNIÈRE ───────────────────────────────────────────────────────────── */
 .bandeaux-container {
   position: relative;
   width: calc(100% + 40px);
   margin-left: -20px;
   margin-right: -20px;
+  overflow: hidden;
 }
 
 .bandeaux {
@@ -63,10 +96,7 @@ h2 {
   width: 100%;
   height: auto;
   margin: 0;
-}
-
-.bandeaux a {
-  margin: 0 40px;
+  will-change: transform; /* optimisation parallax */
 }
 
 .btn-retour {
@@ -80,9 +110,11 @@ h2 {
   font-size: 16px;
   padding: 10px 18px;
   border-radius: 12px;
-  transition: all 0.25s ease;
+  transition: background-color var(--transition), color var(--transition),
+    transform var(--transition);
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 .btn-retour:hover {
@@ -91,7 +123,7 @@ h2 {
   transform: scale(1.05);
 }
 
-/* Animations and Scrolling Text */
+/* ─── TEXTE DÉFILANT ─────────────────────────────────────────────────────── */
 .repeated-text {
   display: flex;
   align-items: center;
@@ -114,9 +146,9 @@ h2 {
 
 .scroll p {
   line-height: 2;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-display);
   margin: 0;
-  color: #000000;
+  color: #000;
   opacity: 0.2;
 }
 
@@ -126,12 +158,8 @@ h2 {
 }
 
 @keyframes gauche {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0%);
-  }
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0%); }
 }
 
 .droite {
@@ -139,26 +167,31 @@ h2 {
 }
 
 @keyframes droite {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0%); }
+  to   { transform: translateX(-50%); }
 }
 
-/* Section 2 Variants (General) */
+/* ─── SECTION 2 (système unifié avec variable CSS) ───────────────────────── */
 .section2,
 .section2ddf,
 .section2gallery,
 .section2OC,
 .section2mo,
 .section2do {
-  width: 100%;
+  /* Pleine largeur robuste */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
   color: white;
-  margin: 20px -20px; /* Negative margin for full width */
-  padding: 0 40px;
-  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 60px;
+  padding-bottom: 40px;
+
+  /* Clip-path initial pour animation GSAP */
+  clip-path: inset(0% 0% 0% 0%);
 }
 
 .section2 h2,
@@ -167,7 +200,8 @@ h2 {
 .section2OC h2,
 .section2mo h2,
 .section2do h2 {
-  padding: 30px 40px 10px 40px;
+  padding: 30px 0 10px 0;
+  margin-top: 0;
 }
 
 .section2 p,
@@ -178,50 +212,76 @@ h2 {
 .section2do p {
   font-size: 16px;
   margin: 0;
-  line-height: 1.5;
-  padding: 0 40px;
+  line-height: 1.6;
   max-width: 850px;
+  padding: 0;
 }
 
-/* Specific Background Colors */
-.section2 {
-  background-color: #10319e;
+/* Couleurs spécifiques */
+.section2        { background-color: #10319e; }
+.section2ddf     { background-color: #8c6cad; }
+.section2gallery { background-color: #72b369; }
+.section2OC      { background-color: #242424; }
+.section2mo      { background-color: #60cdff; }
+.section2do      { background-color: #727840; }
+
+/* ─── GALERIE ────────────────────────────────────────────────────────────── */
+.GGDL-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 0;
 }
 
-.section2ddf {
-  background-color: #8c6cad;
+.gallerie {
+  width: 45%;
+  margin: 40px;
+  border-radius: var(--radius);
+  object-fit: cover;
 }
 
-.section2gallery {
-  background-color: #72b369;
+.trio {
+  width: 29%;
+  margin: 35px;
+  border-radius: var(--radius);
+  object-fit: cover;
 }
 
-.section2OC {
-  background-color: #242424;
-}
-
-.section2mo {
-  background-color: #60cdff;
-}
-
-.section2do {
-  background-color: #727840;
-}
-
-/* Large Image and Iframe */
-.large-image {
-  width: 100%;
-  max-width: 100%;
+.full {
+  margin-top: 80px;
+  width: 60%;
   display: block;
-  background-color: #10319e;
-  margin: 20px 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* ─── BANDES & IMAGES PLEINE LARGEUR ─────────────────────────────────────── */
+.bandes {
+  margin: 40px auto;
+  width: 94%;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.bande {
+  margin: 40px auto;
+  width: 100%;
+  display: block;
+}
+
+/* ─── VIDÉOS ─────────────────────────────────────────────────────────────── */
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* ─── IFRAME ─────────────────────────────────────────────────────────────── */
 .iframe-container {
   position: relative;
   width: 96%;
   height: 0;
-  padding-bottom: 135%; /* Aspect ratio for desktop */
+  padding-bottom: 135%;
   overflow: hidden;
   margin: 40px;
 }
@@ -236,173 +296,59 @@ h2 {
   border-radius: 16px;
 }
 
-/* Gallery Styles (Unified for Consistency) */
-.GGDL-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; /* Pour espacer équitablement avec marges */
-  gap: 0; /* Évite les écarts supplémentaires */
-}
-
-.gallerie {
-  width: 45%;
-  margin: 40px;
-  border-radius: 10px;
-}
-
-.trio {
-  width: 29%;
-  margin: 35px;
-  border-radius: 10px;
-}
-
-.full {
-  margin-top: 80px;
-  width: 60%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.bandeaux-container a {
-  margin: 40px;
-}
-
-.bandes {
-  margin: 40px auto;
-  width: 94%; /* largeur ajustable */
-  display: block;
-  border-radius: 10px;
-}
-
-.bande {
-  margin: 40px auto;
-  width: 100%; /* largeur ajustable */
-  display: block;
-}
-
-/* Video Responsiveness (Added for HTML videos) */
-video {
+/* ─── LARGE IMAGE ────────────────────────────────────────────────────────── */
+.large-image {
+  width: 100%;
   max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+  display: block;
+  background-color: #10319e;
+  margin: 20px 0;
 }
 
-/* Media Queries for Responsiveness */
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* MEDIA QUERIES                                                              */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
 @media (max-width: 1650px) {
-  /* Laptops */
-  .repeated-text {
-    font-size: 56px;
-  }
+  .repeated-text,
+  .scroll p { font-size: 56px; }
 
-  .scroll p {
-    font-size: 56px;
-  }
+  .gallerie  { width: 42%; margin: 35px; }
+  .trio      { width: 26%; margin: 34px; }
+  .full      { width: 65%; margin-top: 70px; }
+  .bandes    { width: 95%; margin: 35px auto; }
+  .bande     { margin: 35px auto; }
 
-  .gallerie {
-    width: 42%;
-    margin: 35px;
-  }
-
-  .trio {
-    width: 26%;
-    margin: 34px;
-  }
-
-  .full {
-    width: 65%;
-    margin-top: 70px;
-  }
-
-  .bandes {
-    width: 95%;
-    margin: 35px auto;
-  }
-
-  .bande {
-    margin: 35px auto;
-  }
-
-  .iframe-container {
-    padding-bottom: 130%;
-    margin: 35px;
-  }
+  .iframe-container { padding-bottom: 130%; margin: 35px; }
 
   .section2,
   .section2ddf,
   .section2gallery,
   .section2OC,
   .section2mo,
-  .section2do {
-    padding: 0 35px;
-  }
-
-  .section2 h2,
-  .section2ddf h2,
-  .section2gallery h2,
-  .section2OC h2,
-  .section2mo h2,
-  .section2do h2 {
-    padding: 25px 35px 8px 35px;
-  }
-
-  .section2 p,
-  .section2ddf p,
-  .section2gallery p,
-  .section2OC p,
-  .section2mo p,
-  .section2do p {
-    padding: 0 35px;
-  }
+  .section2do { padding: 0 50px 35px; }
 }
 
 @media (max-width: 1024px) {
-  /* Tablettes */
-  body {
-    padding: 15px;
-  }
+  body { padding: 15px; }
 
-  h2 {
-    font-size: 22px;
-    padding: 8px 15px;
-  }
+  h2 { font-size: 22px; padding: 8px 15px; }
 
-  .section {
-    padding: 0 30px;
-  }
+  .section { padding: 0 30px; }
 
   .section2,
   .section2ddf,
   .section2gallery,
   .section2OC,
   .section2mo,
-  .section2do {
-    margin: 20px -15px;
-    padding: 0 30px;
-  }
+  .section2do { padding: 0 40px 30px; }
 
-  .info-container {
-    gap: 15px;
-    padding: 0 15px;
-  }
+  .info-container { gap: 15px; padding: 0 15px; }
+  .info-text      { font-size: 15px; line-height: 2.2; }
+  .info-text strong { font-size: 17px; }
 
-  .info-text {
-    font-size: 15px;
-    line-height: 2.2;
-  }
-
-  .info-text strong {
-    font-size: 17px;
-  }
-
-  .repeated-text {
-    font-size: 48px;
-    margin: 30px 0 15px;
-  }
-
-  .scroll p {
-    font-size: 48px;
-  }
+  .repeated-text,
+  .scroll p { font-size: 48px; }
 
   .bandeaux-container {
     width: calc(100% + 30px);
@@ -410,86 +356,37 @@ video {
     margin-right: -15px;
   }
 
-  .iframe-container {
-    padding-bottom: 120%;
-    margin: 30px;
-  }
+  .iframe-container { padding-bottom: 120%; margin: 30px; }
 
-  .gallerie {
-    width: 40%;
-    margin: 30px;
-  }
+  .gallerie { width: 40%; margin: 30px; }
+  .trio     { width: 25%; margin: 30px; }
+  .full     { width: 70%; margin-top: 60px; }
+  .bandes   { width: 96%; margin: 30px auto; }
+  .bande    { margin: 30px auto; }
 
-  .trio {
-    width: 25%;
-    margin: 30px;
-  }
-
-  .full {
-    width: 70%;
-    margin-top: 60px;
-  }
-
-  .bandes {
-    width: 96%;
-    margin: 30px auto;
-  }
-
-  .bande {
-    margin: 30px auto;
-  }
-
-  .btn-retour {
-    font-size: 15px;
-    padding: 9px 16px;
-    top: 15px;
-    left: 25px;
-  }
+  .btn-retour { font-size: 15px; padding: 9px 16px; top: 15px; left: 25px; }
 }
 
 @media (max-width: 768px) {
-  body {
-    padding: 10px;
-  }
+  body { padding: 10px; }
 
-  h2 {
-    font-size: 20px;
-    padding: 0 10px;
-  }
+  h2 { font-size: 20px; padding: 0 10px; }
 
-  .section {
-    padding: 0 10px;
-  }
+  .section { padding: 0 10px; }
 
   .section2,
   .section2ddf,
   .section2gallery,
   .section2OC,
-  .section2mo {
-    margin: 20px -10px;
-    padding: 0 10px;
-  }
+  .section2mo,
+  .section2do { padding: 0 20px 25px; }
 
-  .info-container {
-    flex-direction: column;
-    padding: 0 10px;
-  }
+  .info-container  { flex-direction: column; padding: 0 10px; }
+  .info-text       { font-size: 14px; }
+  .info-text strong { font-size: 16px; }
 
-  .info-text {
-    font-size: 14px;
-  }
-
-  .info-text strong {
-    font-size: 16px;
-  }
-
-  .repeated-text {
-    font-size: 32px;
-  }
-
-  .scroll p {
-    font-size: 32px;
-  }
+  .repeated-text,
+  .scroll p { font-size: 32px; }
 
   .bandeaux-container {
     width: calc(100% + 20px);
@@ -497,106 +394,49 @@ video {
     margin-right: -10px;
   }
 
-  .iframe-container {
-    padding-bottom: 150%;
-  }
+  .iframe-container { padding-bottom: 150%; }
 
-  .GGDL-gallery {
-    flex-direction: column;
-  }
-
+  .GGDL-gallery  { flex-direction: column; }
   .gallerie,
-  .trio {
-    width: 100%;
-    margin: 20px 0;
-  }
+  .trio          { width: 100%; margin: 20px 0; }
+  .full          { width: 90%; margin-top: 40px; }
+  .bandes        { width: 98%; margin: 20px auto; }
+  .bande         { margin: 20px auto; }
 
-  .full {
-    width: 90%;
-    margin-top: 40px;
-  }
-
-  .bandes {
-    width: 98%;
-    margin: 20px auto;
-  }
-
-  .bande {
-    margin: 20px auto;
-  }
-
-  .btn-retour {
-    font-size: 14px;
-    padding: 8px 14px;
-    top: 10px;
-    left: 15px;
-  }
+  .btn-retour { font-size: 14px; padding: 8px 14px; top: 10px; left: 15px; }
 }
 
 @media (max-width: 600px) {
-  /* Petits mobiles intermédiaires */
-  .repeated-text {
-    font-size: 24px;
-  }
-
-  .scroll p {
-    font-size: 24px;
-  }
+  .repeated-text,
+  .scroll p { font-size: 24px; }
 
   .gallerie,
-  .trio {
-    margin: 15px 0;
-  }
+  .trio { margin: 15px 0; }
 
-  .full {
-    width: 95%;
-    margin-top: 30px;
-  }
-
-  .bandes {
-    width: 100%;
-    margin: 15px auto;
-  }
-
-  .bande {
-    margin: 15px auto;
-  }
+  .full   { width: 95%; margin-top: 30px; }
+  .bandes { width: 100%; margin: 15px auto; }
+  .bande  { margin: 15px auto; }
 }
 
 @media (max-width: 480px) {
-  body {
-    padding: 5px;
-  }
+  body { padding: 5px; }
 
-  h2 {
-    font-size: 18px;
-    padding: 0 5px;
-  }
+  h2 { font-size: 18px; padding: 0 5px; }
 
-  .section {
-    padding: 0 5px;
-  }
+  .section { padding: 0 5px; }
 
   .section2,
   .section2ddf,
   .section2gallery,
   .section2OC,
-  .section2mo {
-    margin: 20px -5px;
-    padding: 0 5px;
-  }
+  .section2mo,
+  .section2do { padding: 0 15px 20px; }
 
-  .info-text {
-    font-size: 14px;
-  }
+  .info-text       { font-size: 14px; }
+  .info-text strong { font-size: 15px; }
 
-  .repeated-text {
-    font-size: 18px;
-  }
-
-  .scroll p {
-    font-size: 18px;
-  }
+  .repeated-text,
+  .scroll p { font-size: 18px; }
 
   .bandeaux-container {
     width: calc(100% + 10px);
@@ -604,34 +444,13 @@ video {
     margin-right: -5px;
   }
 
-  .iframe-container {
-    padding-bottom: 160%;
-  }
+  .iframe-container { padding-bottom: 160%; }
 
   .gallerie,
-  .trio {
-    width: 100%;
-    margin: 10px 0;
-  }
+  .trio { width: 100%; margin: 10px 0; }
+  .full  { width: 100%; margin-top: 20px; }
+  .bandes { width: 100%; margin: 10px auto; }
+  .bande  { margin: 10px auto; }
 
-  .full {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .bandes {
-    width: 100%;
-    margin: 10px auto;
-  }
-
-  .bande {
-    margin: 10px auto;
-  }
-
-  .btn-retour {
-    font-size: 12px;
-    padding: 6px 12px;
-    top: 5px;
-    left: 10px;
-  }
+  .btn-retour { font-size: 12px; padding: 6px 12px; top: 5px; left: 10px; }
 }
