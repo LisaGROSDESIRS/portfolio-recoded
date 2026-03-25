@@ -212,24 +212,35 @@
   const transition = document.querySelector(".transition");
   if (!transition) return;
 
-  // Reflet animé au passage
-  const shimmer = transition.querySelector("::before"); // via gsap directement sur l'élément
-
   // ── ENTRÉE : l'overlay remonte et disparaît ──
-  gsap.set(transition, { yPercent: 0, pointerEvents: "none" });
+  // Gère aussi le retour navigateur (bfcache)
+  function playEntranceAnimation() {
+    gsap.set(transition, { yPercent: 0, pointerEvents: "all" });
 
-const tlIn = gsap.timeline({
-  onComplete: () => {
-    animateContent(currentPage); // fonction existante dans script.js
+    gsap.to(transition, {
+      yPercent: -100,
+      duration: 1.1,
+      ease: "expo.inOut",
+      delay: 0.1,
+      pointerEvents: "none",
+      onComplete: () => {
+        transition.style.pointerEvents = "none";
+        // Remet en position basse pour la prochaine sortie
+        gsap.set(transition, { yPercent: 100 });
+        animateContent(currentPage);
+      },
+    });
   }
-});
 
+  // Lancement au chargement normal
+  playEntranceAnimation();
 
-  tlIn.to(transition, {
-    yPercent: -100,
-    duration: 1.1,
-    ease: "expo.inOut",
-    delay: 0.1,
+  // ← CORRECTION CLÉ : relance si retour via flèche navigateur (bfcache)
+  window.addEventListener("pageshow", (e) => {
+    if (e.persisted) {
+      // La page vient du cache navigateur
+      playEntranceAnimation();
+    }
   });
 
   // ── SORTIE : l'overlay monte depuis le bas ──
@@ -247,13 +258,16 @@ const tlIn = gsap.timeline({
       e.preventDefault();
       transition.style.pointerEvents = "all";
 
+      // ── Reflet : on anime un vrai élément div au lieu de ::before ──
+      // (GSAP ne peut pas cibler les pseudo-éléments)
+      const shimmer = transition.querySelector(".transition-shimmer");
+
       const tlOut = gsap.timeline({
         onComplete: () => {
           window.location.href = href;
         },
       });
 
-      // L'overlay entre par le bas
       tlOut.fromTo(
         transition,
         { yPercent: 100 },
@@ -264,25 +278,19 @@ const tlIn = gsap.timeline({
         }
       );
 
-      // Le reflet glisse pendant l'animation
-      tlOut.fromTo(
-        ".transition::before",
-        { yPercent: -200 },
-        {
-          yPercent: 400,
-          duration: 0.75,
-          ease: "power2.out",
-        },
-        0
-      );
+      // Anime le reflet si l'élément existe
+      if (shimmer) {
+        tlOut.fromTo(
+          shimmer,
+          { yPercent: -200 },
+          { yPercent: 400, duration: 0.75, ease: "power2.out" },
+          0
+        );
+      }
     });
   });
-
-  // Reset après navigation
-  window.addEventListener("pageshow", () => {
-    gsap.set(transition, { yPercent: 0 });
-  });
 }
+
 
 
   // ========================================

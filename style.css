@@ -659,8 +659,7 @@ body.overlay-open {
 
 
 /* Ligne de reflet qui glisse */
-.transition::before {
-  content: "";
+.transition-shimmer {
   position: absolute;
   top: -50%;
   left: -50%;
@@ -675,7 +674,7 @@ body.overlay-open {
     transparent 100%
   );
   transform: rotate(-20deg) translateY(-100px);
-  transition: none;
+  pointer-events: none;
 }
 
 /* Bordure lumineuse en haut */
