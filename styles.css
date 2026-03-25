@@ -255,6 +255,17 @@ h2 {
   margin-right: auto;
 }
 
+/* Prépare le GPU avant l'animation */
+.gallerie,
+.trio,
+.bande,
+.bandes,
+.full {
+  will-change: opacity, transform;
+}
+
+
+
 /* ─── BANDES & IMAGES PLEINE LARGEUR ─────────────────────────────────────── */
 .bandes {
   margin: 40px auto;

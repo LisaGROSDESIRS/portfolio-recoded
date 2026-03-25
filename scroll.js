@@ -72,53 +72,53 @@ window.addEventListener("load", () => {
       "-=0.5"
     );
 
-  // ─── 4. APPARITION IMAGES GALERIE AU SCROLL ──────────────────────────────
-  gsap.utils.toArray(".gallerie").forEach((el, i) => {
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 88%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      y: 60,
-      duration: 0.8,
-      delay: (i % 2) * 0.15,
-      ease: "power3.out",
-    });
+ // ─── 4. APPARITION IMAGES GALERIE ────────────────────────────────────────
+gsap.utils.toArray(".gallerie").forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      start: "top 95%",        // ← déclenche plus tôt
+      toggleActions: "play none none none",
+    },
+    opacity: 0,
+    y: 30,                     // ← réduit le déplacement
+    duration: 0.5,             // ← plus rapide
+    delay: (i % 2) * 0.08,    // ← délai réduit
+    ease: "power2.out",        // ← ease plus légère
   });
+});
 
-  // ─── 5. APPARITION IMAGES TRIO AU SCROLL ─────────────────────────────────
-  gsap.utils.toArray(".trio").forEach((el, i) => {
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 90%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      y: 50,
-      scale: 0.96,
-      duration: 0.7,
-      delay: i * 0.12,
-      ease: "power3.out",
-    });
+// ─── 5. APPARITION IMAGES TRIO ───────────────────────────────────────────
+gsap.utils.toArray(".trio").forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      start: "top 95%",
+      toggleActions: "play none none none",
+    },
+    opacity: 0,
+    y: 25,
+    duration: 0.5,
+    delay: i * 0.08,
+    ease: "power2.out",
   });
+});
 
-  // ─── 6. APPARITION IMAGES BANDE ──────────────────────────────────────────
-  gsap.utils.toArray(".bande, .bandes").forEach((el) => {
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 92%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      scale: 0.98,
-      duration: 0.9,
-      ease: "power2.out",
-    });
+// ─── 6. APPARITION IMAGES BANDE ──────────────────────────────────────────
+gsap.utils.toArray(".bande, .bandes").forEach((el) => {
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      start: "top 95%",
+      toggleActions: "play none none none",
+    },
+    opacity: 0,
+    duration: 0.6,
+    ease: "power2.out",
+    // ← suppression du scale (cause de latence visuelle)
   });
+});
+
 
   // ─── 7. OUVERTURE SECTION2 (clip-path) ───────────────────────────────────
   const section2Selectors = [
