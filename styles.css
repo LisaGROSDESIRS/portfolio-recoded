@@ -319,7 +319,8 @@ video {
 .section2gallery,
 .section2OC,
 .section2mo,
-.section2do {
+.section2do
+.btn-retour {
   will-change: transform, opacity;
 }
 
