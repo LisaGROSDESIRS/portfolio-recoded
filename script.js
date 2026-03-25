@@ -265,6 +265,16 @@ const tlIn = gsap.timeline({
       );
 
       // Le reflet glisse pendant l'animation
+      tlOut.fromTo(
+        ".transition::before",
+        { yPercent: -200 },
+        {
+          yPercent: 400,
+          duration: 0.75,
+          ease: "power2.out",
+        },
+        0
+      );
     });
   });
 
