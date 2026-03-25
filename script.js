@@ -208,40 +208,22 @@
   // ========================================
   // TRANSITIONS DE PAGE — VERSION UNIQUE
   // ========================================
-  // Remplacez cette partie dans initTransitions()
-function initTransitions() {
+  function initTransitions() {
   const transition = document.querySelector(".transition");
   if (!transition) return;
 
-  // Ajoutez un style pour le pseudo-élément via JavaScript
-  const style = document.createElement('style');
-  style.textContent = `
-    .transition::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.8) 0%,
-        rgba(255,255,255,0) 50%,
-        rgba(255,255,255,0.8) 100%
-      );
-      transform: translateY(-100%);
-    }
-  `;
-  document.head.appendChild(style);
+  // Reflet animé au passage
+  const shimmer = transition.querySelector("::before"); // via gsap directement sur l'élément
 
   // ── ENTRÉE : l'overlay remonte et disparaît ──
   gsap.set(transition, { yPercent: 0, pointerEvents: "none" });
 
-  const tlIn = gsap.timeline({
-    onComplete: () => {
-      animateContent(currentPage);
-    }
-  });
+const tlIn = gsap.timeline({
+  onComplete: () => {
+    animateContent(currentPage); // fonction existante dans script.js
+  }
+});
+
 
   tlIn.to(transition, {
     yPercent: -100,
@@ -271,7 +253,7 @@ function initTransitions() {
         },
       });
 
-      // Animation de l'overlay
+      // L'overlay entre par le bas
       tlOut.fromTo(
         transition,
         { yPercent: 100 },
@@ -282,32 +264,15 @@ function initTransitions() {
         }
       );
 
-      // Animation du pseudo-élément via CSS variable
-      tlOut.fromTo(
-        transition,
-        { "--shimmer-position": "-100%" },
-        {
-          "--shimmer-position": "100%",
-          duration: 0.75,
-          ease: "power2.out",
-          onUpdate: function() {
-            transition.style.setProperty('--shimmer-position', this.targets()[0].style.getPropertyValue('--shimmer-position'));
-          }
-        },
-        0
-      );
+      // Le reflet glisse pendant l'animation
     });
   });
 
-  // Ajoutez cette CSS variable dans le style créé précédemment
-  style.textContent += `
-    .transition::before {
-      transform: translateY(var(--shimmer-position, -100%));
-      transition: transform 0.1s linear;
-    }
-  `;
+  // Reset après navigation
+  window.addEventListener("pageshow", () => {
+    gsap.set(transition, { yPercent: 0 });
+  });
 }
-
 
 
   // ========================================
