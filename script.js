@@ -218,11 +218,9 @@
   // ── ENTRÉE : l'overlay remonte et disparaît ──
   gsap.set(transition, { yPercent: 0, pointerEvents: "none" });
 
-  const tlIn = gsap.timeline({
+const tlIn = gsap.timeline({
   onComplete: () => {
-    // Lance les animations de texte APRÈS que l'overlay soit parti
-    animateSplitText(currentIndex);
-    animatePageContent(currentIndex);
+    animateContent(currentPage); // fonction existante dans script.js
   }
 });
 
