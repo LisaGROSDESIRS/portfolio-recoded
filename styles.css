@@ -305,6 +305,25 @@ video {
   margin: 20px 0;
 }
 
+.bandeaux-container,
+.section h2,
+.info-text,
+.info-image,
+.gallerie,
+.trio,
+.bande,
+.bandes,
+.full,
+.section2,
+.section2ddf,
+.section2gallery,
+.section2OC,
+.section2mo,
+.section2do {
+  will-change: transform, opacity;
+}
+
+
 /* ══════════════════════════════════════════════════════════════════════════ */
 /* MEDIA QUERIES                                                              */
 /* ══════════════════════════════════════════════════════════════════════════ */
