@@ -205,84 +205,88 @@
     });
   }
 
-  // ========================================
-  // TRANSITIONS DE PAGE — VERSION UNIQUE
-  // ========================================
-  function initTransitions() {
-  const transition = document.querySelector(".transition");
+  // ============================================
+// TRANSITION DE PAGE
+// ============================================
+
+const transition = document.getElementById("page-transition");
+
+function hideTransition() {
   if (!transition) return;
+  gsap.killTweensOf(transition);
+  gsap.fromTo(
+    transition,
+    { yPercent: 0 },
+    {
+      yPercent: -100,
+      duration: 1.1,
+      ease: "expo.inOut",
+      onComplete: () => {
+        transition.style.pointerEvents = "none";
+        gsap.set(transition, { yPercent: -100 });
+      }
+    }
+  );
+}
 
-  // Reflet animé au passage
-  const shimmer = transition.querySelector("::before"); // via gsap directement sur l'élément
+function showTransition(callback) {
+  if (!transition) return;
+  transition.style.pointerEvents = "all";
+  gsap.killTweensOf(transition);
+  gsap.fromTo(
+    transition,
+    { yPercent: 100 },
+    {
+      yPercent: 0,
+      duration: 0.75,
+      ease: "expo.inOut",
+      onComplete: callback
+    }
+  );
+}
 
-  // ── ENTRÉE : l'overlay remonte et disparaît ──
-  gsap.set(transition, { yPercent: 0, pointerEvents: "none" });
+// Lancement à l'entrée sur la page
+document.addEventListener("DOMContentLoaded", () => {
+  hideTransition();
+});
 
-const tlIn = gsap.timeline({
-  onComplete: () => {
-    animateContent(currentPage); // fonction existante dans script.js
+// Bouton retour mobile (bfcache)
+window.addEventListener("pageshow", (e) => {
+  if (e.persisted) {
+    gsap.killTweensOf(transition);
+    gsap.set(transition, { yPercent: -100 });
+    transition.style.pointerEvents = "none";
+    // Force un re-render
+    transition.style.display = "none";
+    requestAnimationFrame(() => {
+      transition.style.display = "";
+      hideTransition();
+    });
   }
 });
 
+// Empêche le bfcache de bloquer
+window.addEventListener("unload", () => {});
 
-  tlIn.to(transition, {
-    yPercent: -100,
-    duration: 1.1,
-    ease: "expo.inOut",
-    delay: 0.1,
-  });
+// Clic sur les liens
+document.querySelectorAll(".transition-link").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href");
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto") ||
+      href.startsWith("tel") ||
+      href.startsWith("http")
+    )
+      return;
 
-  // ── SORTIE : l'overlay monte depuis le bas ──
-  document.querySelectorAll(".transition-link").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-      if (
-        !href ||
-        href.startsWith("#") ||
-        href.startsWith("mailto") ||
-        href.startsWith("http")
-      )
-        return;
-
-      e.preventDefault();
-      transition.style.pointerEvents = "all";
-
-      const tlOut = gsap.timeline({
-        onComplete: () => {
-          window.location.href = href;
-        },
-      });
-
-      // L'overlay entre par le bas
-      tlOut.fromTo(
-        transition,
-        { yPercent: 100 },
-        {
-          yPercent: 0,
-          duration: 0.75,
-          ease: "expo.inOut",
-        }
-      );
-
-      // Le reflet glisse pendant l'animation
-      tlOut.fromTo(
-        ".transition::before",
-        { yPercent: -200 },
-        {
-          yPercent: 400,
-          duration: 0.75,
-          ease: "power2.out",
-        },
-        0
-      );
+    e.preventDefault();
+    showTransition(() => {
+      window.location.href = href;
     });
   });
-
-  // Reset après navigation
-  window.addEventListener("pageshow", () => {
-    gsap.set(transition, { yPercent: 0 });
-  });
-}
+});
 
 
   // ========================================

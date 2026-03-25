@@ -3,20 +3,89 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 // ========================================
 //  TRANSITION LIENS
 // ========================================
+// ============================================
+// TRANSITION DE PAGE
+// ============================================
+
+const transition = document.getElementById("page-transition");
+
+function hideTransition() {
+  if (!transition) return;
+  gsap.killTweensOf(transition);
+  gsap.fromTo(
+    transition,
+    { yPercent: 0 },
+    {
+      yPercent: -100,
+      duration: 1.1,
+      ease: "expo.inOut",
+      onComplete: () => {
+        transition.style.pointerEvents = "none";
+        gsap.set(transition, { yPercent: -100 });
+      }
+    }
+  );
+}
+
+function showTransition(callback) {
+  if (!transition) return;
+  transition.style.pointerEvents = "all";
+  gsap.killTweensOf(transition);
+  gsap.fromTo(
+    transition,
+    { yPercent: 100 },
+    {
+      yPercent: 0,
+      duration: 0.75,
+      ease: "expo.inOut",
+      onComplete: callback
+    }
+  );
+}
+
+// Lancement à l'entrée sur la page
+document.addEventListener("DOMContentLoaded", () => {
+  hideTransition();
+});
+
+// Bouton retour mobile (bfcache)
+window.addEventListener("pageshow", (e) => {
+  if (e.persisted) {
+    gsap.killTweensOf(transition);
+    gsap.set(transition, { yPercent: -100 });
+    transition.style.pointerEvents = "none";
+    // Force un re-render
+    transition.style.display = "none";
+    requestAnimationFrame(() => {
+      transition.style.display = "";
+      hideTransition();
+    });
+  }
+});
+
+// Empêche le bfcache de bloquer
+window.addEventListener("unload", () => {});
+
+// Clic sur les liens
 document.querySelectorAll(".transition-link").forEach((link) => {
   link.addEventListener("click", (e) => {
-    e.preventDefault();
     const href = link.getAttribute("href");
-    const overlay = document.querySelector(".transition");
-    overlay.style.animation = "none";
-    overlay.style.transform = "translateY(100%)";
-    requestAnimationFrame(() => {
-      overlay.style.transition = "transform 0.7s cubic-bezier(0.76,0,0.24,1)";
-      overlay.style.transform = "translateY(0)";
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto") ||
+      href.startsWith("tel") ||
+      href.startsWith("http")
+    )
+      return;
+
+    e.preventDefault();
+    showTransition(() => {
+      window.location.href = href;
     });
-    setTimeout(() => (window.location.href = href), 750);
   });
 });
+
 
 // ========================================
 //  BURGER MENU
