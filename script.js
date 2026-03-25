@@ -212,18 +212,17 @@
   const transition = document.querySelector(".transition");
   if (!transition) return;
 
-  // Reflet animé au passage
-  const shimmer = transition.querySelector("::before"); // via gsap directement sur l'élément
-
   // ── ENTRÉE : l'overlay remonte et disparaît ──
-  gsap.set(transition, { yPercent: 0, pointerEvents: "none" });
+  gsap.set(transition, {
+    yPercent: 0,
+    pointerEvents: "none"
+  });
 
-const tlIn = gsap.timeline({
-  onComplete: () => {
-    animateContent(currentPage); // fonction existante dans script.js
-  }
-});
-
+  const tlIn = gsap.timeline({
+    onComplete: () => {
+      animateContent(currentPage);
+    }
+  });
 
   tlIn.to(transition, {
     yPercent: -100,
@@ -253,7 +252,7 @@ const tlIn = gsap.timeline({
         },
       });
 
-      // L'overlay entre par le bas
+      // Animation de la transition
       tlOut.fromTo(
         transition,
         { yPercent: 100 },
@@ -261,19 +260,15 @@ const tlIn = gsap.timeline({
           yPercent: 0,
           duration: 0.75,
           ease: "expo.inOut",
+          onStart: () => {
+            // Ajoute une classe pour activer le reflet
+            transition.classList.add("animate-shimmer");
+          },
+          onComplete: () => {
+            // Retire la classe après l'animation
+            transition.classList.remove("animate-shimmer");
+          }
         }
-      );
-
-      // Le reflet glisse pendant l'animation
-      tlOut.fromTo(
-        ".transition::before",
-        { yPercent: -200 },
-        {
-          yPercent: 400,
-          duration: 0.75,
-          ease: "power2.out",
-        },
-        0
       );
     });
   });
@@ -283,6 +278,7 @@ const tlIn = gsap.timeline({
     gsap.set(transition, { yPercent: 0 });
   });
 }
+
 
 
   // ========================================
