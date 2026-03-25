@@ -213,13 +213,13 @@ button {
    CONTAINER & PAGES
 ======================================== */
 .container {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
 }
 
 .pages {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
   position: relative;
@@ -230,7 +230,7 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -589,7 +589,7 @@ body.overlay-open {
   .bottom-right {
     left: 20px;
     right: 20px;
-    bottom: 20px;
+    bottom: 24px;
   }
 
   .main-title {
