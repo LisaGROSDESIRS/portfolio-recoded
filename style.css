@@ -656,19 +656,6 @@ body.overlay-open {
   overflow: hidden;
 }
 
-/* Animation du reflet */
-@keyframes shimmer {
-  0% {
-    transform: rotate(-20deg) translateY(-100px);
-  }
-  100% {
-    transform: rotate(-20deg) translateY(100vh);
-  }
-}
-
-.transition.animate-shimmer::before {
-  animation: shimmer 0.75s ease-out forwards;
-}
 
 
 /* Ligne de reflet qui glisse */
